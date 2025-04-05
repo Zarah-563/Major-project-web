@@ -1,0 +1,26 @@
+{% include 'doctor_header.html' %}
+<center>
+	<form method="post">
+		<table class="table" style="width: 800px;">
+			<tr>
+				<th>Remady</th>
+				<td><input type="text" name="remady" required  class="form-control"></td>
+			</tr>
+			<tr>
+				<td  align="center" colspan="2"><input type="submit" name="submit" class="btn btn-success"></td>
+			</tr>
+		</table>
+		<table class="table" style="width: 500px;">
+			<tr>
+				<th>Remady</th>
+			</tr>
+			{% for i in data['view'] %}
+			<tr>
+				<td>{{i['remady']}}</td>
+				<td><a href="?action=remove&remady_id={{i['remady_id']}}&appointment_id={{i['appointment_id']}}&user_id={{i['user_id']}}">Remove</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

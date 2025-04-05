@@ -1,0 +1,38 @@
+{% include 'doctor_header.html' %}
+<center>
+	<form method="post">
+		<table class="table" style="width: 1000px;">
+			<tr>
+				<th>Index</th>
+				<th>Patient Name</th>
+				<th>Skin Image</th>
+				<th>Output</th>
+				<th>Appointment Date</th>
+				<th>Payment</th>
+				<th>Payment Date</th>
+				<th>Payment Status</th>
+			</tr>
+			{% for i in data['view'] %}
+
+			<tr>
+
+				<td>{{loop.index}}</td>
+				<td>{{i['firstname']}} {{i['lastname']}}</td>
+				<td><a href="/{{ i['datasuploaded'] }}"><img style="width: 150px;height: 150px" src="/{{ i['datasuploaded'] }}" alt=""></a></td>
+				<td>{{i['output']}}</td>
+				<td>{{i['appoin_date']}}</td>
+
+				<td>{{i['booking_amount']}}</td>
+				<td>{{i['booking_date']}}</td>
+				<td>{{i['appoin_status']}}</td>
+				<td><a href="doctor_add_remady?appointment_id={{i['appointment_id']}}&user_id={{i['user_id']}}" class="btn btn-primary">Add Remady</a>
+				
+
+				
+			</tr>
+			{% endfor %}
+			
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

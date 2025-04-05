@@ -1,0 +1,53 @@
+{% include 'admin_header1.html' %}
+<br><br><br><br>
+<center>
+    <body style="background-image: url('/static/assets/img/Skin\ care\ cosmetology\ products.jpg');">
+		<!-- Insert Section -->
+		<section id="add-symptoms" style="margin-bottom: 50px;">
+			<form method="post" style="max-width: 600px; background-color: #f9f9f9; padding: 40px; box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15); border-radius: 12px; font-family: 'Roboto', sans-serif; color: #333;" enctype="multipart/form-data">
+				<h1 style="font-size: 30px; color: #34495e; margin-bottom: 30px;">Add Symptoms</h1>
+				<table style="width: 100%; margin-bottom: 20px;">
+					<tr>
+						<th style="padding-right: 20px; text-align: left;">
+							<input type="text" name="sym" placeholder="Enter Symptoms here" class="form-control" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 16px;">
+						</th>
+						<td style="text-align: right;">
+							<input type="submit" name="submit" value="Add" class="btn btn-success" style="padding: 10px 20px; background-color: #27ae60; border: none; border-radius: 6px; color: white; font-size: 16px;">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</section>
+	
+		<!-- View Section -->
+		<section id="view-symptoms">
+			{% if data['sym'] %}
+			<h2 style="font-size: 30px; color: #34495e; margin-top: 40px;">Added Symptoms</h2>
+			<table class="table" style="max-width: 800px; background-color: #fff; border-collapse: collapse; margin-top: 20px; font-size: 16px;">
+				<thead style="background-color: #34495e; color: white;">
+					<tr>
+						<th style="padding: 12px; text-align: left; border-bottom: 1px solid #ccc;">S.No</th>
+						<th style="padding: 12px; text-align: left; border-bottom: 1px solid #ccc;">Symptoms</th>
+						<th style="padding: 12px; text-align: left; border-bottom: 1px solid #ccc;">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in data['sym'] %}
+					<tr style="background-color: {% if loop.index0 % 2 == 0 %} #f9f9f9 {% else %} #fff {% endif %};">
+						<td style="padding: 12px; border-bottom: 1px solid #ccc;">{{loop.index}}</td>
+						<td style="padding: 12px; border-bottom: 1px solid #ccc;">{{row['symptoms']}}</td>
+						<td style="padding: 12px; border-bottom: 1px solid #ccc;">
+							<a href="?action=delete&did={{row['symptom_id']}}&id={{data['id']}}" class="btn btn-danger" style="padding: 5px 10px; color: white; background-color: #e74c3c; border-radius: 6px;">Delete</a>
+						</td> 
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<h3 style="color: #e74c3c;">No symptoms added yet.</h3>
+			{% endif %}
+		</section>
+	</body>
+</center>
+<br><br>
+{% include 'footer.html' %}

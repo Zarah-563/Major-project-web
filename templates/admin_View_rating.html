@@ -1,0 +1,98 @@
+{% include 'admin_header1.html' %}
+<br><br><br><br>
+<center>
+    <form method="post">
+        {% if data['rate'] %}
+        <h1 style="font-family: Open Sans; color: #2c3e50; letter-spacing: 1px; margin-bottom: 30px;">RATING HISTORY</h1>
+        <div class="container">
+            <div class="row justify-content-center">
+                {% for row in data['rate'] %}
+                <div class="col-md-4">
+                    <div class="card classy-card professional-card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{row['user']}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><i class="fas fa-star"></i> Rated: <span class="highlight">{{row['rated']}}</span></p>
+                            <p><i class="fas fa-comment"></i> Feedback: <span class="highlight">"{{row['feedback']}}"</span></p>
+                        </div>
+                        <div class="card-footer">
+                            <small><i class="far fa-calendar-alt"></i> {{row['date']}}</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <h1 style="font-family: 'Georgia', serif; color: #7f8c8d;">!! NO DATA FOUND !!</h1>
+        {% endif %}
+    </form>
+</center>
+{% include 'footer.html' %}
+
+
+<style>
+	.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.professional-card {
+    border: 1px solid #dfe6e9;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.professional-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #34495e;
+    border-bottom: none;
+    padding: 20px;
+    font-family: sans-serif;
+    color: #ecf0f1;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 25px;
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.card-body i {
+    color: #3498db;
+    margin-right: 8px;
+}
+
+.card-body .highlight {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+.card-footer {
+    background-color: #ecf0f1;
+    border-top: 1px solid #dfe6e9;
+    padding: 15px;
+    font-size: 14px;
+    color: #7f8c8d;
+    text-align: right;
+    border-radius: 0 0 15px 15px;
+}
+
+</style>

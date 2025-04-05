@@ -1,0 +1,42 @@
+{% include 'user_header.html' %}
+<center>
+<form method="post"> 
+<table class="table" style="width: 500px;">
+	<h2>Make An Appointment</h2>
+	<tr>
+		<th>Appointment Date</th>
+		<td><input type="datetime-local" name="appoinment" class="form-control" required>
+		</td>
+	</tr>
+	<!-- <tr>
+		<td><span style="color:red">appointment Rate :500</span></td>
+	</tr>	 -->
+		
+			<tr>
+				<td colspan="2" align="center">
+		<input type="submit" name="submit" value="Appoinment" class="btn btn-success" >
+		</td>
+	</tr>
+	
+</table>
+<table class="table" style="width: 900px;">
+	<tr>
+		<th>Index</th>
+		<th>Date Time</th>
+		<th>Amount</th>
+		<th>Appointment Status</th>
+
+	</tr>
+	{% for i in data['view'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{i['appoin_date']}}</td>
+		<td>{{i['amount']}}</td>
+		<td>{{i['appoin_status']}}</td>
+		<td><a href="user_make_payment?total={{i['amount']}}&appointment_id={{i['appointment_id']}}" class="btn btn-primary">Make Payment</a></td>
+	</tr>
+	{% endfor %}
+	
+</table></form>
+</center>
+{% include 'footer.html' %}

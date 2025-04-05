@@ -1,0 +1,153 @@
+{%include 'public_header.html'%}
+<center>
+
+
+	<style></style>
+	<body style="background-image: url('/static/assets/img/imgss.png');">
+		<form class="form" method="post" >
+			<p class="title">Doctor Registration</p>
+			<p class="message">Signup now and get full access to our site.</p>
+			<div class="flex">
+				<label>
+					<input class="input" type="text" name="fname" placeholder="" required="">
+					<span>First Name</span>
+				</label>
+
+				<label>
+					<input class="input" type="text" name="lname" placeholder="" required="">
+					<span>Last Name</span>
+				</label>
+			</div>
+
+			<label>
+				<input class="input" type="text" name="place" placeholder="" required="">
+				<span>Location</span>
+			</label>
+
+			<label>
+				<input class="input" type="text" name="phone" placeholder="" required="">
+				<span>Phone Number</span>
+			</label>
+
+			<label>
+				<input class="input" type="email" name="email" placeholder="" required="">
+				<span>Email Address</span>
+			</label>
+
+			<label>
+				<input class="input" type="text" name="username" placeholder="" required="">
+				<span>Username</span>
+			</label>
+
+			<label>
+				<input class="input" type="password" name="password" placeholder="" required="">
+				<span>Password</span>
+			</label>
+
+			<button class="submit" name="submit">Submit</button>
+			<p class="signin">Already have an account? <a href="login">Sign In</a></p>
+		</form>
+	</body>
+</center>
+
+<style>
+	body {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		background-color: #f2f2f2;
+		color: #333;
+	}
+
+	.form {
+		display: flex;
+		
+		flex-direction: column;
+		gap: 15px;
+		max-width: 600px;
+		/* Increased width */
+		background-color: #fff;
+		padding: 30px;
+		border-radius: 20px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.title {
+		font-size: 32px;
+		/* Slightly larger */
+		font-weight: 600;
+		color: rgb(89, 209, 115);
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.message,
+	.signin {
+		color: #666;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.signin a {
+		color: rgb(41, 101, 61);
+	}
+
+	.signin a:hover {
+		text-decoration: underline;
+	}
+
+	.flex {
+		display: flex;
+		gap: 15px;
+		/* Slightly larger gap between fields */
+	}
+
+	.form label {
+		position: relative;
+		width: 100%;
+	}
+
+	.form label .input {
+		width: 100%;
+		padding: 15px;
+		background-color: #f9f9f9;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		font-size: 14px;
+		outline: none;
+	}
+
+	.form label .input+span {
+		position: absolute;
+		left: 15px;
+		top: 12px;
+		color: #888;
+		font-size: 0.9em;
+		pointer-events: none;
+		transition: all 0.3s;
+	}
+
+	.form label .input:focus+span,
+	.form label .input:valid+span {
+		top: -5px;
+		left: 10px;
+		font-size: 0.75em;
+		color: rgb(89, 209, 115);
+	}
+
+	.submit {
+		padding: 15px;
+		background-color: rgb(89, 209, 115);
+		border: none;
+		border-radius: 10px;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+
+	.submit:hover {
+		background-color: rgb(45, 171, 106);
+	}
+</style>
+
+{%include 'footer.html'%}

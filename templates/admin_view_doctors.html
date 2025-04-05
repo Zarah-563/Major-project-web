@@ -1,0 +1,27 @@
+{% include 'admin_header1.html' %}
+<center>
+
+	<form method="post">	
+		<h2>Doctor Details</h2>
+		<table class="table" style="width: 1000px;">
+
+		<tr>
+			<th>Doctor Name</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Email</th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{i['fname']}} {{i['lname']}}</td>
+			<td>{{i['place']}}</td>
+			<td>{{i['phone']}}</td>
+			<td>{{i['email']}}</td>
+			<td><a href="?action=delete&login_id={{i['login_id']}}">Remove</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	</form>
+
+</center>
+{% include 'footer.html'%}

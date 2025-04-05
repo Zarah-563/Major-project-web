@@ -1,0 +1,21 @@
+{% include 'user_header.html' %}
+<center>
+	<form method="post">
+		<table class="table" style="width: 1200px">
+			<tr>
+				<th>Doctor Name</th>
+				<th>Appointment Date</th>
+				<th>Appointment Details</th>
+
+			</tr>
+			{%  for i in data['view'] %}
+			<tr>
+				<td>{{i['fname']}} {{i['lname']}} </td>
+				<td>{{i['appoin_date']}}</td>
+				<td>{{i['appoin_status']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

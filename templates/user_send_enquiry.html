@@ -1,0 +1,41 @@
+{% include 'user_header.html'%}
+<center>
+	<h1>Enquiry form</h1>
+	<form method="post">		
+	<table  class="table" style="width:500px">
+	<tr>
+		<th>Enquiry</th>
+		<td><input type="text" class="form-control" name="enquiry"></td>
+	</tr>
+		<tr>
+		<td align ="center" colspan="2"><input class="btn btn-success" type="submit" name="submit"></td>
+	</tr>		
+	</table>
+	</form>
+
+</center>
+<br>
+<br>
+<br>
+
+<center>	
+
+<table class="table" style="width: 500px;"  bgcolor="white">
+	<tr>
+		<th>Enquiry details</th>
+		<th>Date</th>
+		<th>Reply</th>
+		<th></th>
+	</tr>
+	{%for r in data['enquiry']%}
+	<tr>
+		<td>{{r['enquiry']}}</td>
+		<td>{{r['enq_date']}}</td>
+		<td>{{r['enq_reply']}}</td>
+		<td> <a href="?action=delete&id={{r['enquiry_id']}}" class="btn btn-primary">delete</a></td>
+
+	</tr>
+	{%endfor%}
+</table>
+</center>
+{%include 'footer.html'%}

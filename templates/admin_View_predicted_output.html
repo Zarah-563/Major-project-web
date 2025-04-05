@@ -1,0 +1,27 @@
+{% include 'admin_header1.html' %}
+<center>
+	<form method="post">
+		{% if data['pre']%}
+		<h1>PREDICTION HISTORY</h1>
+		<table>
+			<tr>
+				<th>SNO</th>
+				<th>USER NAME</th>
+				<th>DATA UPLOADED</th>
+				<th>OUTPUT</th>
+			</tr>
+			{% for row in data['pre']%}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['user']}}</td>
+				<td><a href="/{{row['datasuploaded']}}" download=""><img src="/{{row['datasuploaded']}}" style="width: 150px;height: 150px"></a></td>
+				<td>{{row['output']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<h1>!! NO DATA FOUND !!</h1>
+		{% endif %}
+	</form>
+</center>
+{% include 'footer.html' %}

@@ -1,0 +1,35 @@
+{% include 'admin_header1.html' %}
+<br><br><br><br>
+<center>
+	<form method="post">
+		<table class="table" style="width: 800px;">
+			<tr>
+				<th>Index</th>
+				<th>Patient Name</th>
+				<th>Doctor Name</th>
+				<th>Skin Image</th>
+				<th>Appointment Date</th>
+				<th>Payment</th>
+				<th>Payment Status</th>
+			</tr>
+			{% for i in data['view'] %}
+
+			<tr>
+
+				<td>{{loop.index}}</td>
+				<td>{{i['firstname']}} {{i['lastname']}}</td>
+				<td>{{i['fname']}} {{i['lname']}}</td>
+				<td><a href="/{{ i['datasuploaded'] }}"><img style="width: 150px;height: 150px" src="/{{ i['datasuploaded'] }}" alt=""></a></td>
+				<td>{{i['appoin_date']}}</td>
+				<td>{{i['booking_amount']}}</td>
+				<td>{{i['booking_date']}}</td>
+				
+
+				
+			</tr>
+			{% endfor %}
+			
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

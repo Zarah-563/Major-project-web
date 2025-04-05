@@ -1,0 +1,20 @@
+{% include 'user_header.html' %}
+<center>
+<form method="post">
+	<h2>Remadys</h2>
+	<table class="table" style="width: 800px;">
+		<tr>
+			<th>Index</th>
+			<th>Remadys</th>
+
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{i['remady']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+</center>
+{% include 'footer.html' %}

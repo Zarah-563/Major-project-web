@@ -1,0 +1,84 @@
+{% include 'user_header.html' %}
+<br><br><br>
+<center>
+
+	<body
+		style="background-image: url('/static/assets/img/d4fe373c-9747-470b-8e09-68923bb77a58.jpg');background-size: cover/cover;">
+		<form method="post" enctype="multipart/form-data">
+			<div
+				style="width: 800px; padding: 30px; background-color: #ffffff; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+				<h1
+					style="color: #2c3e50; font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; margin-bottom: 30px;">
+					Upload Data</h1>
+				<table class="table" style="width: 100%; margin-bottom: 20px;">
+					<tr>
+						<th>
+							<input type="file" name="data" class="form-control" required
+								style="padding: 12px; border-radius: 8px; border: 1px solid #ced4da; font-family: 'Lato', sans-serif;">
+						</th>
+					</tr>
+					<tr>
+						<td align="center" colspan="2">
+							<input type="submit" name="submit" value="Upload" class="btn btn-primary"
+								style="width: 100%; padding: 12px; background-color: #34495e; border: none; font-size: 18px; font-family: 'Lato', sans-serif; letter-spacing: 1px;">
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			{% if data['pre'] %}
+			<div style="width: 1200px; margin-top: 50px;">
+				<h1
+					style="color: #2c3e50; font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; margin-bottom: 20px; text-align: center;">
+					Prediction History
+				</h1>
+				<table class="table"
+					style="width: 100%; background-color: #ffffff; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); border-radius: 15px; overflow: hidden;">
+					<thead style="background-color: #f1f1f1; border-radius: 15px;">
+						<tr
+							style="font-family: 'Lato', sans-serif; font-weight: bold; color: #34495e; text-align: center;">
+							<th style="padding: 20px;">S.No</th>
+							<th style="padding: 20px;">Data Uploaded</th>
+							<th style="padding: 20px;">Output</th>
+							<th style="padding: 20px;">Status</th>
+							<th style="padding: 20px;">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for row in data['pre'] %}
+						<tr
+							style="font-family: 'Lato', sans-serif; color: #2c3e50; font-size: 16px; text-align: center;">
+							<td style="padding: 20px;">{{ loop.index }}</td>
+							<td style="padding: 20px;">
+								<a href="/{{ row['datasuploaded'] }}"
+									style="text-decoration: none; color: #2980b9; font-weight: bold;">Click here to view
+									image</a>
+							</td>
+							<td style="padding: 20px;">{{ row['output'] }}</td>
+							<td style="padding: 20px;">
+								{% if row['output'] == 'normal' %}
+								<span style="color: #27ae60; font-weight: bold;">Normal Teeth</span>
+								{% else %}
+								<span style="color: #e74c3c; font-weight: bold;">Please consult a doctor</span>
+								{% endif %}
+							</td>
+							<td style="padding: 20px;">
+								{% if row['output'] != 'normal' %}
+								<a href="user_view_doctors?prediction_id={{ row['prediction_id'] }}"
+									class="btn btn-primary"
+									style="background-color: #16a085; border: none; padding: 10px 30px; font-family: 'Lato', sans-serif; font-size: 14px; border-radius: 8px;">
+									Make Appointment
+								</a>
+								{% endif %}
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			{% endif %}
+
+		</form>
+	</body>
+</center>
+{% include 'footer.html' %}

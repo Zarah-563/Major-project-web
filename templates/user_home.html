@@ -1,0 +1,65 @@
+{% include 'user_header.html' %}
+<br><br><br><br><br>
+<center>
+    <body style="background-image: url('/static/assets/img/blah.jpg'); background-size: cover; animation: zoomInBackground 5s ease-in-out;">
+        <form method="post">
+            <h1 class="welcome-text" style="margin-top: 250px; font-family: 'Times New Roman', Times, serif; color: aliceblue;">
+                <span id="typed-text"></span>
+            </h1>
+        </form>
+    </body>
+</center>
+{% include 'footer.html' %}
+
+<style>
+    /* Background zoom-in animation */
+    @keyframes zoomInBackground {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1.1);
+        }
+    }
+
+    /* Typing effect */
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    /* Styling the text for typing effect */
+    .welcome-text span {
+        display: inline-block;
+        font-size: 48px;
+        color: aliceblue;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+        width: 0;
+        animation: typing 3s steps(20, end), blink 0.75s step-end infinite;
+    }
+</style>
+
+<script>
+    // Typing effect script
+    document.addEventListener("DOMContentLoaded", function () {
+        const typedText = "Welcome User";
+        let i = 0;
+        const typingSpeed = 100;  // Adjust typing speed
+
+        function typeWriter() {
+            if (i < typedText.length) {
+                document.getElementById("typed-text").textContent += typedText.charAt(i);
+                i++;
+                setTimeout(typeWriter, typingSpeed);
+            }
+        }
+        typeWriter();
+    });
+</script>
+																																																																																																																																																																																
